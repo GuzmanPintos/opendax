@@ -78,13 +78,13 @@ services:
 
   sidekiq:
     restart: always
-    image: "<%= @config['images']['applogic'] %>"
+    image: "<%= @config['images']['barong'] %>"
     env_file:
-      - ../config/applogic.env
+      - ../config/barong.env
     volumes:
       - ../config/applogic/management_api_v2.yml:/home/app/config/management_api_v2.yml
       - ../config/applogic/schedule.yml:/home/app/config/schedule.yml
-    command: bash -c "sidekiq"
+    command: bash -c "bundle exec sidekiq"
 
   listener:
     restart: always
